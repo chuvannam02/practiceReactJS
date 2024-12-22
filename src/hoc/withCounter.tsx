@@ -5,7 +5,7 @@
  * @Time 5:02 PM
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const UpdatedComponent = (OriginalComponent) => {
     const NewComponent = (props) => {
