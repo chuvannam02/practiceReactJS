@@ -5,7 +5,7 @@ import HoverIncrease from "./components/HoverIncrease.tsx";
 // import './App.css'
 
 import Counter from "./components/Counter.tsx";
-import VnptMap123 from "./components/VnptMap123.tsx";
+// import VnptMap123 from "./components/VnptMap123.tsx";
 import './App.css';
 
 function App() {
@@ -17,10 +17,9 @@ function App() {
             {/*<Content count={count}>Component</Content>*/}
             {/*<h1>Count: {count}</h1>*/}
             {/*<button onClick={() => setCount(count + 1)} style={{cursor: 'pointer'}}>Click me</button>*/}
-              <ClickIncrease />
-              <HoverIncrease />
-              <Counter />
-              <VnptMap123 />
+            <ClickIncrease/>
+            <HoverIncrease/>
+            <Counter/>
             <div className={'wrapper'}>
                 {/*<div className={'boxed'}></div>*/}
                 <div className={'boxed2'}></div>
@@ -47,6 +46,47 @@ function App() {
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate facilis harum voluptatem! Ab amet
                 aspernatur autem deleniti modi nobis odio odit quam sed temporibus? Consequuntur numquam possimus
                 quisquam rem vero.</p>
+            <br/>
+            <div className="container">
+                <a href="#" className='link'>Evondev</a>
+            </div>
+
+            {/*<button className="btn">*/}
+            {/*    Frontend Dev*/}
+            {/*</button>*/}
+
+            <div className="btn2">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Evondev
+            </div>
+            <br/>
+            <div className="button3">
+                Chu Nam
+            </div>
+            <br/>
+            <div className="resize">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Resize
+            </div>
+
+            <br/>
+            <div className="button button--bestia">
+                <div className="button_bg">
+
+                </div>
+                <span>
+                    Locate
+                </span>
+            </div>
+            <div className="typewriter">
+                <h1>The cat and the hat.</h1>
+            </div>
         </>
     )
 }
