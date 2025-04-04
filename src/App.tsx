@@ -7,6 +7,7 @@ import HoverIncrease from "./components/HoverIncrease.tsx";
 import Counter from "./components/Counter.tsx";
 // import VnptMap123 from "./components/VnptMap123.tsx";
 import './App.css';
+import CountClick from "./components/CountClick.tsx";
 
 function App() {
     // const [count, setCount] = useState(0)
@@ -55,38 +56,40 @@ function App() {
             {/*    Frontend Dev*/}
             {/*</button>*/}
 
-            <div className="btn2">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Evondev
-            </div>
-            <br/>
-            <div className="button3">
-                Chu Nam
-            </div>
-            <br/>
-            <div className="resize">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Resize
-            </div>
+            {/*<div className="btn2">*/}
+            {/*    <span></span>*/}
+            {/*    <span></span>*/}
+            {/*    <span></span>*/}
+            {/*    <span></span>*/}
+            {/*    Evondev*/}
+            {/*</div>*/}
+            {/*<br/>*/}
+            {/*<div className="button3">*/}
+            {/*    Chu Nam*/}
+            {/*</div>*/}
+            {/*<br/>*/}
+            {/*<div className="resize">*/}
+            {/*    <span></span>*/}
+            {/*    <span></span>*/}
+            {/*    <span></span>*/}
+            {/*    <span></span>*/}
+            {/*    Resize*/}
+            {/*</div>*/}
 
-            <br/>
-            <div className="button button--bestia">
-                <div className="button_bg">
+            {/*<br/>*/}
+            {/*<div className="button button--bestia">*/}
+            {/*    <div className="button_bg">*/}
 
-                </div>
-                <span>
-                    Locate
-                </span>
-            </div>
-            <div className="typewriter">
-                <h1>The cat and the hat.</h1>
-            </div>
+            {/*    </div>*/}
+            {/*    <span>*/}
+            {/*        Locate*/}
+            {/*    </span>*/}
+            {/*</div>*/}
+            {/*<div className="typewriter">*/}
+            {/*    <h1>The cat and the hat.</h1>*/}
+            {/*</div>*/}
+
+            <CountClick/>
         </>
     )
 }
