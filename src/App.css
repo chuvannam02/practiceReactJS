@@ -1,12 +1,12 @@
-root {
-    --primary: #eee;
-}
 
 /*body {*/
 /*    display: flex;*/
 /*    justify-content: center;*/
 /*    */
 /*}*/
+root {
+    --primary: #eee;
+}
 
 .wrapper {
     width: 100%;
