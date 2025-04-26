@@ -1,11 +1,10 @@
 import { QueryFunction, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { SWPeopleResponse } from "./people.interface";
-import {Button} from "antd";
-import {useAlert} from "../../_utilities/popups/AlertService.tsx";
+import { Button, Form, Input } from "antd";
+import { useAlert } from "../../_utilities/popups/AlertService.tsx";
 
-// Typed query function
 type PeopleQueryKey = ['people', { search: string; page: number }];
 const fetchPeople: QueryFunction<SWPeopleResponse, PeopleQueryKey> =
     async ({ queryKey }) => {
@@ -18,8 +17,9 @@ const fetchPeople: QueryFunction<SWPeopleResponse, PeopleQueryKey> =
     };
 
 const SWPeopleQuery = () => {
-    const [search, setSearch] = useState<string>("");
+    const [form] = Form.useForm();
     const [page, setPage] = useState<number>(1);
+    const [submittedSearch, setSubmittedSearch] = useState<string>("");
 
     const { success, error: notifyError, warning, info } = useAlert();
 
@@ -30,49 +30,94 @@ const SWPeopleQuery = () => {
         error,
         refetch,
         isFetching,
-    } = useQuery<
-        SWPeopleResponse,
-        AxiosError,
-        SWPeopleResponse,
-        PeopleQueryKey
-    >({
-        queryKey: ['people', { search, page }],
+    } = useQuery<SWPeopleResponse, AxiosError, SWPeopleResponse, PeopleQueryKey>({
+        queryKey: ['people', { search: submittedSearch, page }],
         queryFn: fetchPeople,
+        enabled: false,
         keepPreviousData: true,
-        staleTime: 1000 * 60 * 5, // 5 minutes
+        retry: 2,
+        retryDelay: 500,
     });
 
-    const handleSearch = () => {
+    useEffect(() => {
+        refetch().catch(err => {
+            notifyError("Lỗi tải dữ liệu!", err?.message || "Không thể tải dữ liệu");
+        });
+    }, []);
+
+    const onFinish = async (values: { search: string }) => {
         setPage(1);
-        console.log("Search:", search);
-        console.log("Page:", page);
-        console.log("Data:", data);
-        refetch();
+        setSubmittedSearch(values.search);
+        try {
+            const result = await refetch();
+            if (result.isError && result.error) {
+                notifyError("Lỗi tìm kiếm!", result.error.message);
+            }
+        } catch (err: any) {
+            notifyError("Lỗi hệ thống!", err.message || "Đã xảy ra lỗi không xác định");
+        }
+    };
+
+    const handleNextPage = async () => {
+        if (!isError && data && data.count > 0) {
+            const next = page + 1;
+            setPage(next);
+            try {
+                const result = await refetch();
+                if (result.isError && result.error) {
+                    notifyError("Lỗi khi chuyển trang!", result.error.message);
+                }
+            } catch (err: any) {
+                notifyError("Lỗi hệ thống!", err.message || "Đã xảy ra lỗi khi chuyển trang");
+            }
+        }
+    };
+
+    const handlePreviousPage = async () => {
+        const prev = Math.max(page - 1, 1);
+        setPage(prev);
+        try {
+            const result = await refetch();
+            if (result.isError && result.error) {
+                notifyError("Lỗi khi quay lại!", result.error.message);
+            }
+        } catch (err: any) {
+            notifyError("Lỗi hệ thống!", err.message || "Đã xảy ra lỗi khi quay lại");
+        }
     };
 
     return (
         <>
             <h1 className="text-2xl font-bold mb-2">Star Wars Characters</h1>
 
-            <div className="flex gap-2 mb-4">
-                <input
-                    type="text"
-                    placeholder="Search characters..."
-                    className="border px-2 py-1 rounded flex-grow"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                />
-                <button
-                    onClick={handleSearch}
-                    disabled={!search}
-                    className={`px-4 py-1 rounded text-white ${
-                        search ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-400 cursor-not-allowed'
-                    }`}
+            <Form
+                form={form}
+                layout="inline"
+                onFinish={onFinish}
+                autoComplete="off"
+                className="mb-4"
+            >
+                <Form.Item
+                    name="search"
+                    rules={[{ required: true, message: 'Vui lòng nhập từ khóa tìm kiếm!' }]}
+                    className="flex-grow"
                 >
-                    Tìm
-                </button>
-            </div>
+                    <Input
+                        placeholder="Search characters..."
+                        onPressEnter={() => form.submit()}
+                    />
+                </Form.Item>
+
+                <Form.Item>
+                    <Button
+                        type="primary"
+                        htmlType="submit"
+                        loading={isLoading || isFetching}
+                    >
+                        Tìm
+                    </Button>
+                </Form.Item>
+            </Form>
 
             {(isLoading || isFetching) ? (
                 <p>Loading...</p>
@@ -88,31 +133,32 @@ const SWPeopleQuery = () => {
 
             <div className="mt-4 flex items-center gap-4">
                 <button
-                    onClick={() => setPage((p) => Math.max(p - 1, 1))}
+                    onClick={handlePreviousPage}
+                    disabled={page <= 1}
                     className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
                 >
                     Previous
                 </button>
                 <span>Page {page}</span>
                 <button
-                    onClick={() => setPage((p) => p + 1)}
-                    className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+                    onClick={handleNextPage}
+                    className="px-3 py-1 bg-gray-200 rounded"
                 >
                     Next
                 </button>
             </div>
 
-            <div className="notify">
-                <Button type={"primary"} onClick={() => success('Thành công!', 'Đã lưu dữ liệu')}>
+            <div className="notify mt-6 flex gap-2">
+                <Button type="primary" onClick={() => success('Thành công!', 'Đã lưu dữ liệu')}>
                     Show Success
                 </Button>
-                <Button type={"primary"} onClick={() => notifyError('Lỗi!', 'Xảy ra lỗi')}>
+                <Button type="primary" onClick={() => notifyError('Lỗi!', 'Xảy ra lỗi')}>
                     Show Error
                 </Button>
-                <Button type={"primary"} onClick={() => warning('Cảnh báo!', 'Đây là cảnh báo')}>
+                <Button type="primary" onClick={() => warning('Cảnh báo!', 'Đây là cảnh báo')}>
                     Show Warning
                 </Button>
-                <Button type={"primary"} onClick={() => info('Thông tin!', 'Đây là thông tin')}>
+                <Button type="primary" onClick={() => info('Thông tin!', 'Đây là thông tin')}>
                     Show Info
                 </Button>
             </div>
