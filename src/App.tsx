@@ -10,6 +10,8 @@ import Counter from "./components/Counter.tsx";
 import TodoInput from "./components/learning/FormDataTodo.tsx";
 import {useState} from "react";
 import SWPeopleQuery from "./components/ReactQuery/TanstackQuery.tsx";
+import Button from "./components/learning/Pass_Props_To_Nested_Component/Button.tsx";
+import Component1 from "./components/learning/React_Context_To_Avoid_Props_Drilling/Component1.tsx";
 
 type Todo = {
     id: number | null;
@@ -62,11 +64,11 @@ function App() {
     //         });
     // }, []);
 
-    const [formData, setFormData] = useState({ title: "" });
+    const [formData, setFormData] = useState({title: ""});
     const [listTodos, setListTodos] = useState<Todo[]>([]);
 
     const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ title: e.target.value });
+        setFormData({title: e.target.value});
     };
 
     const handleSubmit = () => {
@@ -77,7 +79,7 @@ function App() {
             status: false,
         };
         setListTodos((prev) => [...prev, newTodo]);
-        setFormData({ title: "" });
+        setFormData({title: ""});
     };
 
     const handleRemoveTodo = (newList: Todo[]) => {
@@ -162,17 +164,36 @@ function App() {
             {/*</div>*/}
 
             {/*<CountClick/>*/}
-            <div className="min-h-screen bg-gray-50 py-10">
-                <TodoInput
-                    formData={formData}
-                    handleChangeTitle={handleChangeTitle}
-                    handleSubmit={handleSubmit}
-                    listTodos={listTodos}
-                    handleRemoveTodo={handleRemoveTodo}
-                />
+            {/*<div className="min-h-screen bg-gray-50 py-10">*/}
+            {/*    <TodoInput*/}
+            {/*        formData={formData}*/}
+            {/*        handleChangeTitle={handleChangeTitle}*/}
+            {/*        handleSubmit={handleSubmit}*/}
+            {/*        listTodos={listTodos}*/}
+            {/*        handleRemoveTodo={handleRemoveTodo}*/}
+            {/*    />*/}
+            {/*</div>*/}
+            {/*<hr/>*/}
+            {/*<SWPeopleQuery/>*/}
+
+            {/*        div>{value}</div>	Nhúng giá trị value*/}
+            {/*<div>{1 + 2}</div>	Hiển thị kết quả của biểu thức 1 + 2*/}
+            {/*<Button config={{ size: "lg" }}>	Truyền object { size: "lg" } vào prop config*/}
+            {/*<div style={{ color: "red" }}/>	Truyền object style { color: "red" }    */}
+            {/* {} trong JSX để mở 1 JSX expression - Để nhúng biểu bức Javascript vào JSX*/}
+            {/*Cặp {} bên trong - object literal - theo đó bạn truyền 1 object đi*/}
+            {/*<Button textProps={{*/}
+            {/*    className: "text-red-500",*/}
+            {/*    style: {fontSize: "20px"},*/}
+            {/*}}>Click Me!</Button>*/}
+
+            {/*Nhúng JS vào JSX	{ expression }*/}
+            {/*Truyền object literal vào prop	{{ key: value }}*/}
+
+            <div style={{padding: 20}}>
+                <h1>🧪 React Context Demo</h1>
+                <Component1/>
             </div>
-            <hr/>
-            <SWPeopleQuery/>
         </>
     )
 }
