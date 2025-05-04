@@ -12,7 +12,7 @@ import {useState} from "react";
 import SWPeopleQuery from "./components/ReactQuery/TanstackQuery.tsx";
 import Button from "./components/learning/Pass_Props_To_Nested_Component/Button.tsx";
 import Component1 from "./components/learning/React_Context_To_Avoid_Props_Drilling/Component1.tsx";
-
+import "./app.scss";
 type Todo = {
     id: number | null;
     title: string;
@@ -190,9 +190,15 @@ function App() {
             {/*Nhúng JS vào JSX	{ expression }*/}
             {/*Truyền object literal vào prop	{{ key: value }}*/}
 
-            <div style={{padding: 20}}>
-                <h1>🧪 React Context Demo</h1>
-                <Component1/>
+            {/*<div style={{padding: 20}}>*/}
+            {/*    <h1>🧪 React Context Demo</h1>*/}
+            {/*    <Component1/>*/}
+            {/*</div>*/}
+
+            <div className="test">
+                <div className="children">
+
+                </div>
             </div>
         </>
     )

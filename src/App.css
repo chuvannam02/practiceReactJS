@@ -430,10 +430,10 @@ root {
 
 /* The typing effect */
 @keyframes typing {
-    0% { width: 0; }
-    50% { width: 100%; } /* Gõ xong */
-    90% { width: 100%; } /* Giữ nguyên chữ một lúc */
-    100% { width: 0; } /* Xóa dần */
+    0% { width: 0 }
+    50% { width: 100% } /* Gõ xong */
+    90% { width: 100% } /* Giữ nguyên chữ một lúc */
+    100% { width: 0 } /* Xóa dần */
 }
 
 /* The typewriter cursor effect */
@@ -442,4 +442,18 @@ root {
     50% { border-color: orange }
 }
 
+.test {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: black;
+    width: 100%;
+}
 
+.children {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+
+}
