@@ -13,11 +13,16 @@ import SWPeopleQuery from "./components/ReactQuery/TanstackQuery.tsx";
 import Button from "./components/learning/Pass_Props_To_Nested_Component/Button.tsx";
 import Component1 from "./components/learning/React_Context_To_Avoid_Props_Drilling/Component1.tsx";
 import "./app.scss";
+import useCustomHook from "./components/learning/Custom_Hooks/useCustomHook.ts";
+import UseReducer from "./components/learning/useReducer/UseReducer.tsx";
+import DashboardButton from "./components/learning/DashboardButton.jsx";
+
 type Todo = {
     id: number | null;
     title: string;
     status: boolean;
 };
+
 
 function App() {
     // const requestBody = {
@@ -64,26 +69,53 @@ function App() {
     //         });
     // }, []);
 
-    const [formData, setFormData] = useState({title: ""});
+    // const [formData, setFormData] = useState({title: ""});
+    // const [listTodos, setListTodos] = useState<Todo[]>([]);
+    //
+    // const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     setFormData({title: e.target.value});
+    // };
+    //
+    // const handleSubmit = () => {
+    //     if (!formData.title) return;
+    //     const newTodo: Todo = {
+    //         id: Date.now(),
+    //         title: formData.title,
+    //         status: false,
+    //     };
+    //     setListTodos((prev) => [...prev, newTodo]);
+    //     setFormData({title: ""});
+    // };
+    //
+    // const handleRemoveTodo = (newList: Todo[]) => {
+    //     setListTodos(newList);
+    // };
+
+    console.log('This will be removed');
+    console.warn('This will be kept');
+    console.error('This will be kept');
+    debugger; // This will be removed
+
+    const apiUrl = 'http://localhost:3000/api'; // This will be replaced
+
+    const [formData, setFormData] = useState<Todo>({
+        id: Date.now(),
+        title: "",
+        status: false,
+    });
     const [listTodos, setListTodos] = useState<Todo[]>([]);
 
+    const [todos, {add: addTodo, remove: removeTodo}] = useCustomHook<Todo>([]);
+
     const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({title: e.target.value});
+        setFormData({...formData, title: e.target.value});
     };
 
     const handleSubmit = () => {
         if (!formData.title) return;
-        const newTodo: Todo = {
-            id: Date.now(),
-            title: formData.title,
-            status: false,
-        };
-        setListTodos((prev) => [...prev, newTodo]);
-        setFormData({title: ""});
-    };
-
-    const handleRemoveTodo = (newList: Todo[]) => {
-        setListTodos(newList);
+        const newTodo = {...formData, id: Date.now()};
+        setListTodos([...listTodos, newTodo]);
+        setFormData({...formData, title: ""});
     };
 
     return (
@@ -95,15 +127,16 @@ function App() {
             <ClickIncrease/>
             <HoverIncrease/>
             <Counter/>
-            <div className={'wrapper'}>
+            <div className={"wrapper"}>
                 {/*<div className={'boxed'}></div>*/}
-                <div className={'boxed2'}></div>
-                <div className={'boxed2 chunam'} style={{background: 'blue'}}></div>
-                <div className={'boxed2'} style={{background: 'red'}}></div>
+                <div className={"boxed2"}></div>
+                <div className={"boxed2 chunam"} style={{background: "blue"}}></div>
+                <div className={"boxed2"} style={{background: "red"}}></div>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur culpa delectus expedita
-                    facilis fugiat fugit illum impedit ipsa itaque magnam, maiores maxime, molestias nobis,
-                    perferendis porro quia quod repellendus suscipit.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur
+                    culpa delectus expedita facilis fugiat fugit illum impedit ipsa itaque
+                    magnam, maiores maxime, molestias nobis, perferendis porro quia quod
+                    repellendus suscipit.
                 </p>
             </div>
 
@@ -118,12 +151,17 @@ function App() {
                     <div className="dropdown-item">Photoshop</div>
                 </div>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate facilis harum voluptatem! Ab amet
-                aspernatur autem deleniti modi nobis odio odit quam sed temporibus? Consequuntur numquam possimus
-                quisquam rem vero.</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate
+                facilis harum voluptatem! Ab amet aspernatur autem deleniti modi nobis
+                odio odit quam sed temporibus? Consequuntur numquam possimus quisquam
+                rem vero.
+            </p>
             <br/>
             <div className="container">
-                <a href="#" className='link'>Evondev</a>
+                <a href="#" className="link">
+                    Evondev
+                </a>
             </div>
 
             {/*<button className="btn">*/}
@@ -195,13 +233,67 @@ function App() {
             {/*    <Component1/>*/}
             {/*</div>*/}
 
-            <div className="test">
-                <div className="children">
+            {/*<div className="test">*/}
+            {/*    <div className="children">*/}
 
-                </div>
+            {/*    </div>*/}
+            {/*</div>*/}
+
+            <div className="todos">
+                <h1>Todo List</h1>
+                <TodoInput
+                    formData={formData}
+                    handleChangeTitle={handleChangeTitle}
+                    handleSubmit={handleSubmit}
+                    listTodos={listTodos}
+                    handleRemoveTodo={setListTodos}
+                />
+                <ul>
+                    {listTodos.map((todo, index) => (
+                        <li key={todo.id}>
+                            {todo.title}
+                            <button
+                                onClick={() => {
+                                    const newList = [...listTodos];
+                                    newList.splice(index, 1);
+                                    setListTodos(newList);
+                                }}
+                            >
+                                Remove
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+
+                <h1>Custom Hook Todo List</h1>
+                <button
+                    onClick={() =>
+                        addTodo({id: Date.now(), title: "New Todo", status: false})
+                    }
+                >
+                    Add Todo
+                </button>
+                <ul>
+                    {todos.map((todo, index) => (
+                        <li key={todo.id}>
+                            {todo.title}
+                            <button onClick={() => removeTodo(index)}>Remove</button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <UseReducer/>
+            <div className="box"></div>
+
+            <div className="circle-wrapper">
+                <div className="circle-foreground">N</div>
+            </div>
+
+            <div className="chuvannam">
+                <DashboardButton/>
             </div>
         </>
-    )
+    );
 }
 
-export default App
+export default App;
