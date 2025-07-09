@@ -37,14 +37,13 @@ function App() {
     // };
     //
     // useEffect(() =>  {
-    //     axios.post('http://localhost:8081/v1/unit/get-all', requestBody, {
+    //     axios.post('LOCALHOST_PLACEHOLDER/v1/unit/get-all', requestBody, {
     //         headers: {
     //             'Content-Type': 'application/json',
     //             'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlU1FmcERNTnVLazVlUlRHMzlYNjdBV1Z2QjQtaC14YWVGd1F1SXNYRjBrIn0.eyJleHAiOjE3NDQ3MDQ1NDAsImlhdCI6MTc0NDcwNDMyNCwiYXV0aF90aW1lIjoxNzQ0Njk5NzQwLCJqdGkiOiI3YWUwODRjZi1iY2U5LTRjYjAtYWI2Ny01NDI2NDA4N2E3OTMiLCJpc3MiOiJodHRwczovL2xvZ2luLWxha2Vob3VzZS52bnB0LnZuL3JlYWxtcy9kYXRhLXBsYXRmb3JtIiwiYXVkIjpbInN1cGVyc2V0IiwiYWNjb3VudCJdLCJzdWIiOiIzMmFiMzk0Yy1lNTc0LTQ5MWMtOWYzOC02OTQ0MWUyOTlkZTgiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJkYXRhLXBsYXRmb3JtIiwibm9uY2UiOiI0MjQyMGY0Yi0xYzg2LTQyMmYtODkyYi0zNTY5NTYxYWVhOGUiLCJzZXNzaW9uX3N0YXRlIjoiODYxNzkyYzgtYjdjYS00NTliLWJmNWEtMTQ2NWEwNmExODQ3IiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJzdXBlci1hZG1pbiIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLWRhdGEtcGxhdGZvcm0iLCJhZG1pbi1zdG9yYWdlIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsic3VwZXJzZXQiOnsicm9sZXMiOlsiQWRtaW4iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiI4NjE3OTJjOC1iN2NhLTQ1OWItYmY1YS0xNDY1YTA2YTE4NDciLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IlZOUFRORVQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ2bnB0bmV0IiwiZ2l2ZW5fbmFtZSI6IlZOUFRORVQiLCJmYW1pbHlfbmFtZSI6IiIsImVtYWlsIjoidm5wdG5ldEB2bnB0LnZuIn0.O2PqqkR2uVNYTeFb-8WtcZTB-eYGQY-_NAcELBHaUVKDFLPlRCadGfv1nVlz241BIIt5bUEfmf9mIcFUG-bGUS66-dyC96-RLRQxP9pNfQExsiml64YpefU-oBRo7DxSxui4D1ZhKNbWsvv46smJP4_dnVohxcnPs3I18QZDivgKAZx-_mkrE7QH8592BL_nu8RnfOQbINaijl0sL85voxoww7yTxYHN69TPWhu_uCIwPsWZg3DvGXuZkhFfhu37o2SsD7Ol8Y6H6RJIoPRdqPulyB24zvDVbMtjBfnL_7O-nTgHGtloj1b0OqTuQJ-NSaKECFboUoETtj1gO6uNsA'
     //         }
     //     })
     //         .then(response => {
-    //             console.log('✅ Dữ liệu trả về:', response.data);
     //         })
     //         .catch(error => {
     //             console.error('❌ Lỗi gọi API:', error);
@@ -62,7 +61,6 @@ function App() {
     //     })
     //         .then(response => response.json())
     //         .then(data => {
-    //             console.log('✅ Data:', data);
     //         })
     //         .catch(error => {
     //             console.error('❌ Fetch error:', error);
@@ -91,13 +89,6 @@ function App() {
     //     setListTodos(newList);
     // };
 
-    console.log('This will be removed');
-    console.warn('This will be kept');
-    console.error('This will be kept');
-    debugger; // This will be removed
-
-    const apiUrl = 'http://localhost:3000/api'; // This will be replaced
-
     const [formData, setFormData] = useState<Todo>({
         id: Date.now(),
         title: "",
@@ -117,6 +108,10 @@ function App() {
         setListTodos([...listTodos, newTodo]);
         setFormData({...formData, title: ""});
     };
+
+    console.warn('This will be kept');
+    console.error('This will be kept');
+    debugger; // This will be removed
 
     return (
         <>
