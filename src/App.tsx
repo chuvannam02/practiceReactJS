@@ -8,21 +8,20 @@ import Counter from "./components/Counter.tsx";
 // import VnptMap123 from "./components/VnptMap123.tsx";
 // import './App.css';
 import TodoInput from "./components/learning/FormDataTodo.tsx";
-import {useState} from "react";
-import SWPeopleQuery from "./components/ReactQuery/TanstackQuery.tsx";
-import Button from "./components/learning/Pass_Props_To_Nested_Component/Button.tsx";
-import Component1 from "./components/learning/React_Context_To_Avoid_Props_Drilling/Component1.tsx";
+import {useEffect, useState} from "react";
 import "./app.scss";
 import useCustomHook from "./components/learning/Custom_Hooks/useCustomHook.ts";
-import UseReducer from "./components/learning/useReducer/UseReducer.tsx";
-import DashboardButton from "./components/learning/DashboardButton.jsx";
+// import UseReducer from "./components/learning/useReducer/UseReducer.tsx";
+import {LazyAContainer} from "./components/learning/tests/LazyAContainer.tsx";
+import {LazyBContainer} from "./components/learning/tests/LazyBContainer.tsx";
+import CurrentTime from "./components/CurrentTime.tsx";
+import BenchmarkDuplicate from "./test/BenchmarkDuplicate.tsx";
 
 type Todo = {
     id: number | null;
     title: string;
     status: boolean;
 };
-
 
 function App() {
     // const requestBody = {
@@ -88,6 +87,28 @@ function App() {
     // const handleRemoveTodo = (newList: Todo[]) => {
     //     setListTodos(newList);
     // };
+    const hasDuplicate = (arr: number[]) => {
+        for (let i: number = 0; i < arr.length; i++) {
+            const item: number = arr[i];
+            if (arr.slice(i + 1).indexOf(item) !== -1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    const hasDuplicateUseSet = (arr: number[]): boolean => {
+        const seen = new Set<number>();
+        for (const num of arr) {
+            if (seen.has(num)) return true;
+            seen.add(num);
+        }
+        return false;
+    };
+
+    useEffect(() => {
+        const numbers: number[] = [1, 2, 3, 4, 5, 1];
+    }, []);
 
     const [formData, setFormData] = useState<Todo>({
         id: Date.now(),
@@ -109,9 +130,7 @@ function App() {
         setFormData({...formData, title: ""});
     };
 
-    console.warn('This will be kept');
-    console.error('This will be kept');
-    debugger; // This will be removed
+    const [active, setActive] = useState<"A" | "B">("A");
 
     return (
         <>
@@ -119,6 +138,7 @@ function App() {
             {/*<Content count={count}>Component</Content>*/}
             {/*<h1>Count: {count}</h1>*/}
             {/*<button onClick={() => setCount(count + 1)} style={{cursor: 'pointer'}}>Click me</button>*/}
+            <CurrentTime/>
             <ClickIncrease/>
             <HoverIncrease/>
             <Counter/>
@@ -277,8 +297,7 @@ function App() {
                     ))}
                 </ul>
             </div>
-            <UseReducer/>
-            <div className="box"></div>
+            {/* <div className="box"></div>
 
             <div className="circle-wrapper">
                 <div className="circle-foreground">N</div>
@@ -286,7 +305,28 @@ function App() {
 
             <div className="chuvannam">
                 <DashboardButton/>
+            </div> */}
+
+            <div>
+                <div className="p-4">
+                    <div className="space-x-2 mb-4">
+                        <button
+                            onClick={() => setActive("A")}
+                            className="bg-green-500 text-white px-3 py-1 rounded"
+                        >
+                            Module A
+                        </button>
+                        <button
+                            onClick={() => setActive("B")}
+                            className="bg-purple-500 text-white px-3 py-1 rounded"
+                        >
+                            Module B
+                        </button>
+                    </div>
+                    {active === "A" ? <LazyAContainer/> : <LazyBContainer/>}
+                </div>
             </div>
+            <BenchmarkDuplicate />
         </>
     );
 }

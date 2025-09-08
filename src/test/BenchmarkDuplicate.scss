@@ -1,0 +1,24 @@
+/**
+ * @Project: learn-react
+ * @Author CHUNAM
+ * @Date 9/8/2025
+ * @Time 11:04 PM
+ */
+.btn {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darkblue;
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: navy;
+    cursor: not-allowed;
+  }
+}

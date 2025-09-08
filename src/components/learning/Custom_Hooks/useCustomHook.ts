@@ -16,6 +16,8 @@ const Custom_Hooks = <T>(initialState: T[] = []) => {
     const remove = (index: number) => {
         setState((currentState) => {
             const newState = [...currentState];
+            // .splice(index, 1) removes the element at the specified index
+            // .unshift() adds the element at the beginning of the array
             newState.splice(index, 1);
             return newState;
         });
