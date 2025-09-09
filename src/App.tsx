@@ -17,6 +17,9 @@ import {LazyBContainer} from "./components/learning/tests/LazyBContainer.tsx";
 import CurrentTime from "./components/CurrentTime.tsx";
 import BenchmarkDuplicate from "./test/BenchmarkDuplicate.tsx";
 import Demo from "./test/useCallback/Demo.tsx";
+import Header from "./layout/header/Header.tsx";
+import {Outlet, Route} from "react-router-dom";
+import Footer from "./layout/footer/Footer.tsx";
 
 type Todo = {
     id: number | null;
@@ -139,46 +142,46 @@ function App() {
             {/*<Content count={count}>Component</Content>*/}
             {/*<h1>Count: {count}</h1>*/}
             {/*<button onClick={() => setCount(count + 1)} style={{cursor: 'pointer'}}>Click me</button>*/}
-            <CurrentTime/>
-            <ClickIncrease/>
-            <HoverIncrease/>
-            <Counter/>
-            <div className={"wrapper"}>
-                {/*<div className={'boxed'}></div>*/}
-                <div className={"boxed2"}></div>
-                <div className={"boxed2 chunam"} style={{background: "blue"}}></div>
-                <div className={"boxed2"} style={{background: "red"}}></div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur
-                    culpa delectus expedita facilis fugiat fugit illum impedit ipsa itaque
-                    magnam, maiores maxime, molestias nobis, perferendis porro quia quod
-                    repellendus suscipit.
-                </p>
-            </div>
+            {/*<CurrentTime/>*/}
+            {/*<ClickIncrease/>*/}
+            {/*<HoverIncrease/>*/}
+            {/*<Counter/>*/}
+            {/*<div className={"wrapper"}>*/}
+            {/*    /!*<div className={'boxed'}></div>*!/*/}
+            {/*    <div className={"boxed2"}></div>*/}
+            {/*    <div className={"boxed2 chunam"} style={{background: "blue"}}></div>*/}
+            {/*    <div className={"boxed2"} style={{background: "red"}}></div>*/}
+            {/*    <p>*/}
+            {/*        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur*/}
+            {/*        culpa delectus expedita facilis fugiat fugit illum impedit ipsa itaque*/}
+            {/*        magnam, maiores maxime, molestias nobis, perferendis porro quia quod*/}
+            {/*        repellendus suscipit.*/}
+            {/*    </p>*/}
+            {/*</div>*/}
 
-            <div className="dropdown">
-                <div className="dropdown-select">
-                    <span>Figma</span>
-                    <ion-icon name="caret-down-outline"></ion-icon>
-                </div>
-                <div className="dropdown-list">
-                    <div className="dropdown-item">Figma</div>
-                    <div className="dropdown-item">Adobe XD</div>
-                    <div className="dropdown-item">Photoshop</div>
-                </div>
-            </div>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate
-                facilis harum voluptatem! Ab amet aspernatur autem deleniti modi nobis
-                odio odit quam sed temporibus? Consequuntur numquam possimus quisquam
-                rem vero.
-            </p>
-            <br/>
-            <div className="container">
-                <a href="#" className="link">
-                    Evondev
-                </a>
-            </div>
+            {/*<div className="dropdown">*/}
+            {/*    <div className="dropdown-select">*/}
+            {/*        <span>Figma</span>*/}
+            {/*        <ion-icon name="caret-down-outline"></ion-icon>*/}
+            {/*    </div>*/}
+            {/*    <div className="dropdown-list">*/}
+            {/*        <div className="dropdown-item">Figma</div>*/}
+            {/*        <div className="dropdown-item">Adobe XD</div>*/}
+            {/*        <div className="dropdown-item">Photoshop</div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            {/*<p>*/}
+            {/*    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate*/}
+            {/*    facilis harum voluptatem! Ab amet aspernatur autem deleniti modi nobis*/}
+            {/*    odio odit quam sed temporibus? Consequuntur numquam possimus quisquam*/}
+            {/*    rem vero.*/}
+            {/*</p>*/}
+            {/*<br/>*/}
+            {/*<div className="container">*/}
+            {/*    <a href="#" className="link">*/}
+            {/*        Evondev*/}
+            {/*    </a>*/}
+            {/*</div>*/}
 
             {/*<button className="btn">*/}
             {/*    Frontend Dev*/}
@@ -255,49 +258,49 @@ function App() {
             {/*    </div>*/}
             {/*</div>*/}
 
-            <div className="todos">
-                <h1>Todo List</h1>
-                <TodoInput
-                    formData={formData}
-                    handleChangeTitle={handleChangeTitle}
-                    handleSubmit={handleSubmit}
-                    listTodos={listTodos}
-                    handleRemoveTodo={setListTodos}
-                />
-                <ul>
-                    {listTodos.map((todo, index) => (
-                        <li key={todo.id}>
-                            {todo.title}
-                            <button
-                                onClick={() => {
-                                    const newList = [...listTodos];
-                                    newList.splice(index, 1);
-                                    setListTodos(newList);
-                                }}
-                            >
-                                Remove
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+            {/*<div className="todos">*/}
+            {/*    <h1>Todo List</h1>*/}
+            {/*    <TodoInput*/}
+            {/*        formData={formData}*/}
+            {/*        handleChangeTitle={handleChangeTitle}*/}
+            {/*        handleSubmit={handleSubmit}*/}
+            {/*        listTodos={listTodos}*/}
+            {/*        handleRemoveTodo={setListTodos}*/}
+            {/*    />*/}
+            {/*    <ul>*/}
+            {/*        {listTodos.map((todo, index) => (*/}
+            {/*            <li key={todo.id}>*/}
+            {/*                {todo.title}*/}
+            {/*                <button*/}
+            {/*                    onClick={() => {*/}
+            {/*                        const newList = [...listTodos];*/}
+            {/*                        newList.splice(index, 1);*/}
+            {/*                        setListTodos(newList);*/}
+            {/*                    }}*/}
+            {/*                >*/}
+            {/*                    Remove*/}
+            {/*                </button>*/}
+            {/*            </li>*/}
+            {/*        ))}*/}
+            {/*    </ul>*/}
 
-                <h1>Custom Hook Todo List</h1>
-                <button
-                    onClick={() =>
-                        addTodo({id: Date.now(), title: "New Todo", status: false})
-                    }
-                >
-                    Add Todo
-                </button>
-                <ul>
-                    {todos.map((todo, index) => (
-                        <li key={todo.id}>
-                            {todo.title}
-                            <button onClick={() => removeTodo(index)}>Remove</button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            {/*    <h1>Custom Hook Todo List</h1>*/}
+            {/*    <button*/}
+            {/*        onClick={() =>*/}
+            {/*            addTodo({id: Date.now(), title: "New Todo", status: false})*/}
+            {/*        }*/}
+            {/*    >*/}
+            {/*        Add Todo*/}
+            {/*    </button>*/}
+            {/*    <ul>*/}
+            {/*        {todos.map((todo, index) => (*/}
+            {/*            <li key={todo.id}>*/}
+            {/*                {todo.title}*/}
+            {/*                <button onClick={() => removeTodo(index)}>Remove</button>*/}
+            {/*            </li>*/}
+            {/*        ))}*/}
+            {/*    </ul>*/}
+            {/*</div>*/}
             {/* <div className="box"></div>
 
             <div className="circle-wrapper">
@@ -308,27 +311,33 @@ function App() {
                 <DashboardButton/>
             </div> */}
 
-            <div>
-                <div className="p-4">
-                    <div className="space-x-2 mb-4">
-                        <button
-                            onClick={() => setActive("A")}
-                            className="bg-green-500 text-white px-3 py-1 rounded"
-                        >
-                            Module A
-                        </button>
-                        <button
-                            onClick={() => setActive("B")}
-                            className="bg-purple-500 text-white px-3 py-1 rounded"
-                        >
-                            Module B
-                        </button>
-                    </div>
-                    {active === "A" ? <LazyAContainer/> : <LazyBContainer/>}
-                </div>
+            {/*<div>*/}
+            {/*    <div className="p-4">*/}
+            {/*        <div className="space-x-2 mb-4">*/}
+            {/*            <button*/}
+            {/*                onClick={() => setActive("A")}*/}
+            {/*                className="bg-green-500 text-white px-3 py-1 rounded"*/}
+            {/*            >*/}
+            {/*                Module A*/}
+            {/*            </button>*/}
+            {/*            <button*/}
+            {/*                onClick={() => setActive("B")}*/}
+            {/*                className="bg-purple-500 text-white px-3 py-1 rounded"*/}
+            {/*            >*/}
+            {/*                Module B*/}
+            {/*            </button>*/}
+            {/*        </div>*/}
+            {/*        {active === "A" ? <LazyAContainer/> : <LazyBContainer/>}*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            {/*<BenchmarkDuplicate />*/}
+            {/*<Demo />*/}
+
+            <div className="app">
+                <Header />
+                <Outlet/>
+                <Footer />
             </div>
-            <BenchmarkDuplicate />
-            <Demo />
         </>
     );
 }
