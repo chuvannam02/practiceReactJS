@@ -335,7 +335,9 @@ function App() {
 
             <div className="app">
                 <Header />
-                <Outlet/>
+                <main>
+                    <Outlet/>
+                </main>
                 <Footer />
             </div>
         </>

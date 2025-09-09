@@ -5,10 +5,11 @@
  * @Time 11:18 AM
  */
 import {NavLink} from "react-router-dom";
+import "./header.scss";
 
 const Header: React.FC = () => {
     return (
-        <div className="header">
+        <header className="header">
             <div className="header__inner">
                 <div className="header__left">
                     <NavLink to={"/"} className="logo">
@@ -32,7 +33,7 @@ const Header: React.FC = () => {
                     </nav>
                 </div>
             </div>
-        </div>
+        </header>
     );
 };
 

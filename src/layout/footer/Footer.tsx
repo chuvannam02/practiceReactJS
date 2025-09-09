@@ -4,12 +4,13 @@
  * @Date 9/9/2025
  * @Time 9:43 PM
  */
+import "./footer.scss";
 
 const Footer: React.FC = () => {
     return(
-        <div className={"footer"}>
+        <footer className={"footer"}>
             <h3>Đây chỉ là chân trang mà thôi!</h3>
-        </div>
+        </footer>
     );
 };
 

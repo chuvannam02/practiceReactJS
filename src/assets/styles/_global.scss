@@ -1,0 +1,47 @@
+@charset "UTF-8";
+/**
+ * @Project: learn-react
+ * @Author CHUNAM
+ * @Date 9/9/2025
+ * @Time 11:44 PM
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-base;
+  color: $text-color;
+  background: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        left: 20%;
+    }
+    100% {
+        opacity: 1;
+        left: 0;
+    }
+}
+
+p {
+    margin: 0;
+}
+
+img {
+    display: block;
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,65 @@
+/**
+ * @Project: learn-react
+ * @Author CHUNAM
+ * @Date 9/9/2025
+ * @Time 9:50 PM
+ */
+
+//.header {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  width: 100%;
+//  z-index: 9999;
+//  background: white;
+//  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+//
+//  .header__inner {
+//    display: flex;
+//    align-items: center;
+//    justify-content: space-around;
+//    flex-direction: row;
+//    margin: auto;
+//    padding: 1.6rem 0;
+//  }
+//}
+
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.header {
+    height: $header-height;
+    background: $primary-color;
+    color: white;
+
+    &__inner {
+        display: flex;
+        align-items: center; // căn giữa theo chiều dọc
+        justify-content: space-between; // logo bên trái, menu bên phải
+        height: 100%;
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-weight: bold;
+        font-size: 20px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .menu {
+        display: flex;
+        gap: 20px;
+
+        &__item {
+            color: white;
+            text-decoration: none;
+
+            &.active {
+                font-weight: bold;
+                border-bottom: 2px solid white;
+            }
+        }
+    }
+}
+

@@ -52,7 +52,7 @@
   border: 4px solid rgba(255, 255, 255, 0.2);
   border-top: 4px solid white; /* Màu nổi bật để thấy xoay */
   border-radius: 50%;
-    animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
@@ -63,5 +63,18 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  main {
+    padding-top: var(--header-height);
+  }
+}
+
 
 

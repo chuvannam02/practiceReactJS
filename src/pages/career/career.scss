@@ -1,0 +1,89 @@
+/**
+ * @Project: learn-react
+ * @Author CHUNAM
+ * @Date 9/10/2025
+ * @Time 12:06 AM
+ */
+
+.banner {
+    background-image: url("../../assets/images/tap-the-TYP-1-scaled.jpg");
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;    // không lặp
+    height: 100vh;
+    margin-top: 0;
+    padding: 6rem 10rem;
+    filter: brightness(0.85);
+
+    .banner__overlay {
+        width: 50%;
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        height: 100%;
+        top: 0;
+        background: linear-gradient(90deg, #000 -23%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .banner__content {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        .banner__text p:first-child {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.7019607843);
+            letter-spacing: 4px;
+        }
+
+        .banner__text p:nth-child(2) {
+            font-size: 6.4rem;
+            font-weight: 800;
+            color: #fff;
+        }
+    }
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6rem;
+
+    .reason {
+        display: flex;
+        align-items: center;
+        gap: 7rem;
+        margin-bottom: 4rem;
+
+        .reason__image {
+            position: relative;
+            height: 40vw;
+            max-height: 800px;
+            flex: 1;
+            width: 100%;
+
+            img {
+                position: absolute;
+                height: auto;
+                max-width: 82.5%;
+                border-radius: 2rem;
+
+                &:first-child {
+                    top: 0;
+                    left: 0;
+                }
+            }
+        }
+    }
+
+    .reason--reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+.container-xl {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+}

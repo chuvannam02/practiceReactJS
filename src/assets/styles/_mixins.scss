@@ -1,0 +1,39 @@
+/**
+ * @Project: learn-react
+ * @Author CHUNAM
+ * @Date 9/9/2025
+ * @Time 11:44 PM
+ */
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-custom(
+  $align-items: center,
+  $justify-content: null,
+  $gap: 0px,
+  $flex: null,
+  $child-count: 1
+) {
+  display: flex;
+  @if $justify-content != null {
+    justify-content: $justify-content;
+  }
+  align-items: $align-items;
+  gap: $gap;
+
+  @if $flex != null {
+    flex: $flex;
+  } @else if $child-count == 1 {
+    flex: 1;
+  } @else {
+    flex: none;
+  }
+}
+
+@mixin box-shadow($color: rgba(0, 0, 0, 0.1)) {
+  box-shadow: 0 2px 8px $color;
+}
