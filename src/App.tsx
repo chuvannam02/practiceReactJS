@@ -16,6 +16,7 @@ import {LazyAContainer} from "./components/learning/tests/LazyAContainer.tsx";
 import {LazyBContainer} from "./components/learning/tests/LazyBContainer.tsx";
 import CurrentTime from "./components/CurrentTime.tsx";
 import BenchmarkDuplicate from "./test/BenchmarkDuplicate.tsx";
+import Demo from "./test/useCallback/Demo.tsx";
 
 type Todo = {
     id: number | null;
@@ -327,6 +328,7 @@ function App() {
                 </div>
             </div>
             <BenchmarkDuplicate />
+            <Demo />
         </>
     );
 }
