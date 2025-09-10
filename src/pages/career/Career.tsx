@@ -7,6 +7,10 @@
 import "./career.scss";
 import img1 from "../../assets/images/image_1.jpg";
 import img2 from "../../assets/images/image_2.jpg";
+import img3 from "../../assets/images/image_4.jpg";
+import img4 from "../../assets/images/image_3.jpg";
+import img5 from "../../assets/images/image_5.jpg";
+import img6 from "../../assets/images/imaeg_6.jpg";
 
 const Career: React.FC = () => {
     return (
@@ -29,21 +33,63 @@ const Career: React.FC = () => {
 
             <section className={"container container-xl"}>
                 <div className="reason">
-                    <div className="reason__content"></div>
+                    <div className="reason__content">
+                        <div className="reason__content">
+                            <p className="reason__sub-title">LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT</p>
+                            <p className="reason__title">Cơ hội phát triển bản thân thần tốc</p>
+                            <div className="reason__text">
+                                <p>Môi trường TP Entertainment luôn phát huy hết điểm mạnh và khả năng sáng tạo của bạn,
+                                    nhờ đó bạn có cơ hội được tỏa sáng.</p>
+                                <p>Được làm việc và coaching trực tiếp bởi Leader giàu kinh nghiệm.</p>
+                            </div>
+                        </div>
+                    </div>
                     <div className="reason__image">
                         <img src={img1} alt="" loading="lazy"/>
                         <img src={img2} alt="" loading="lazy"/>
                     </div>
                 </div>
                 <div className="reason reason--reverse">
-                <div className="reason__content"></div>
-                    <div className="reason__image"></div>
+                    <div className="reason__content">
+                        <p className="reason__sub-title">LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT</p>
+                        <p className="reason__title">Môi trường làm việc lý tưởng</p>
+                        <div className="reason__text">
+                            <p>Văn hoá công ty đậm đà sâu sắc với 4 giá trị cốt lõi: Hiệu quả, sáng tạo, lấy khách hàng
+                                là trung tâm, nhân văn.</p>
+                            <p>Làm việc tại công ty công nghệ hàng đầu về Mobile app với môi trường trẻ trung, năng
+                                động, thân thiện, sáng tạo.</p>
+                        </div>
+                    </div>
+                    <div className="reason__image">
+                        <img src={img3} alt="" loading="lazy"/>
+                        <img src={img4} alt="" loading="lazy"/>
+                    </div>
                 </div>
                 <div className="reason">
-                    <div className="reason__content"></div>
-                    <div className="reason__image"></div>
+                    <div className="reason__content">
+                        <p className="reason__sub-title">LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT</p>
+                        <p className="reason__title">Môi trường làm việc lý tưởng</p>
+                        <div className="reason__text">
+                            <p>Văn hoá công ty đậm đà sâu sắc với 4 giá trị cốt lõi: Hiệu quả, sáng tạo, lấy khách hàng
+                                là trung tâm, nhân văn.</p>
+                            <p>Làm việc tại công ty công nghệ hàng đầu về Mobile app với môi trường trẻ trung, năng
+                                động, thân thiện, sáng tạo.</p>
+                        </div>
+                    </div>
+                    <div className="reason__image">
+                        <img src={img5} alt="" loading="lazy"/>
+                        <img src={img6} alt="" loading="lazy"/>
+                    </div>
                 </div>
             </section>
+
+            <div className={"container container-xl"} id={"recruitment-list"}>
+                <section className={"list"}>
+                    <div>
+
+                    </div>
+                </section>
+            </div>
         </>
     );
 };

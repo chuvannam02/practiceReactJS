@@ -7,21 +7,23 @@
  */
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: $font-family-base;
-  color: $text-color;
-  background: #f8f9fa;
+    font-family: $font-family-base;
+    color: $text-color;
+    background: #f8f9fa;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    padding-right: 10rem;
+    padding-left: 10rem;
 }
 
 @keyframes fadeInRight {
@@ -45,3 +47,5 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+

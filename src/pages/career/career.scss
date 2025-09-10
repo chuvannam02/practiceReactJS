@@ -56,6 +56,31 @@
         gap: 7rem;
         margin-bottom: 4rem;
 
+        .reason__content {
+            color: rgba(3, 24, 51, 0.8);
+            flex: 1;
+
+            .reason__sub-title {
+                color: rgba(19, 19, 19, 0.7019607843);
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+
+            .reason__title {
+                font-size: 6.4rem;
+                color: #131313;
+                font-weight: 800;
+            }
+
+            .reason__text {
+                margin-top: 3rem;
+
+                p {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+
         .reason__image {
             position: relative;
             height: 40vw;
@@ -72,6 +97,11 @@
                 &:first-child {
                     top: 0;
                     left: 0;
+                }
+
+                &:last-child {
+                    right: 0;
+                    bottom: 0;
                 }
             }
         }
