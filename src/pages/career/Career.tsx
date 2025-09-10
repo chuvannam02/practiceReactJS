@@ -12,6 +12,9 @@ import img4 from "../../assets/images/image_3.jpg";
 import img5 from "../../assets/images/image_5.jpg";
 import img6 from "../../assets/images/imaeg_6.jpg";
 
+import AnimatedSection from "../../_utilities/AnimatedSection.tsx";
+import ReasonSection from "../../_utilities/popups/ReasonSection.tsx";
+
 const Career: React.FC = () => {
     return (
         <>
@@ -32,55 +35,94 @@ const Career: React.FC = () => {
             </section>
 
             <section className={"container container-xl"}>
-                <div className="reason">
-                    <div className="reason__content">
-                        <div className="reason__content">
-                            <p className="reason__sub-title">LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT</p>
-                            <p className="reason__title">Cơ hội phát triển bản thân thần tốc</p>
-                            <div className="reason__text">
-                                <p>Môi trường TP Entertainment luôn phát huy hết điểm mạnh và khả năng sáng tạo của bạn,
-                                    nhờ đó bạn có cơ hội được tỏa sáng.</p>
-                                <p>Được làm việc và coaching trực tiếp bởi Leader giàu kinh nghiệm.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="reason__image">
-                        <img src={img1} alt="" loading="lazy"/>
-                        <img src={img2} alt="" loading="lazy"/>
-                    </div>
-                </div>
-                <div className="reason reason--reverse">
-                    <div className="reason__content">
-                        <p className="reason__sub-title">LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT</p>
-                        <p className="reason__title">Môi trường làm việc lý tưởng</p>
-                        <div className="reason__text">
-                            <p>Văn hoá công ty đậm đà sâu sắc với 4 giá trị cốt lõi: Hiệu quả, sáng tạo, lấy khách hàng
-                                là trung tâm, nhân văn.</p>
-                            <p>Làm việc tại công ty công nghệ hàng đầu về Mobile app với môi trường trẻ trung, năng
-                                động, thân thiện, sáng tạo.</p>
-                        </div>
-                    </div>
-                    <div className="reason__image">
-                        <img src={img3} alt="" loading="lazy"/>
-                        <img src={img4} alt="" loading="lazy"/>
-                    </div>
-                </div>
-                <div className="reason">
-                    <div className="reason__content">
-                        <p className="reason__sub-title">LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT</p>
-                        <p className="reason__title">Môi trường làm việc lý tưởng</p>
-                        <div className="reason__text">
-                            <p>Văn hoá công ty đậm đà sâu sắc với 4 giá trị cốt lõi: Hiệu quả, sáng tạo, lấy khách hàng
-                                là trung tâm, nhân văn.</p>
-                            <p>Làm việc tại công ty công nghệ hàng đầu về Mobile app với môi trường trẻ trung, năng
-                                động, thân thiện, sáng tạo.</p>
-                        </div>
-                    </div>
-                    <div className="reason__image">
-                        <img src={img5} alt="" loading="lazy"/>
-                        <img src={img6} alt="" loading="lazy"/>
-                    </div>
-                </div>
+                <AnimatedSection>
+                    {/*<div className="reason">*/}
+                    {/*    <div className="reason__content">*/}
+                    {/*        <div className="reason__content">*/}
+                    {/*            <p className="reason__sub-title">LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT</p>*/}
+                    {/*            <p className="reason__title">Cơ hội phát triển bản thân thần tốc</p>*/}
+                    {/*            <div className="reason__text">*/}
+                    {/*                <p>Môi trường TP Entertainment luôn phát huy hết điểm mạnh và khả năng sáng tạo của*/}
+                    {/*                    bạn,*/}
+                    {/*                    nhờ đó bạn có cơ hội được tỏa sáng.</p>*/}
+                    {/*                <p>Được làm việc và coaching trực tiếp bởi Leader giàu kinh nghiệm.</p>*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="reason__image">*/}
+                    {/*        <img src={img1} alt="" loading="lazy"/>*/}
+                    {/*        <img src={img2} alt="" loading="lazy"/>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    <ReasonSection
+                        subtitle="LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT"
+                        title="Cơ hội phát triển bản thân thần tốc"
+                        texts={[
+                            "Môi trường TP Entertainment luôn phát huy hết điểm mạnh và khả năng sáng tạo của bạn, nhờ đó bạn có cơ hội được tỏa sáng.",
+                            "Được làm việc và coaching trực tiếp bởi Leader giàu kinh nghiệm.",
+                        ]}
+                        images={[img1, img2]}
+                    />
+                </AnimatedSection>
+
+                <AnimatedSection>
+                    {/*<div className="reason reason--reverse">*/}
+                    {/*    <div className="reason__content">*/}
+                    {/*        <p className="reason__sub-title">LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT</p>*/}
+                    {/*        <p className="reason__title">Môi trường làm việc lý tưởng</p>*/}
+                    {/*        <div className="reason__text">*/}
+                    {/*            <p>Văn hoá công ty đậm đà sâu sắc với 4 giá trị cốt lõi: Hiệu quả, sáng tạo, lấy khách*/}
+                    {/*                hàng*/}
+                    {/*                là trung tâm, nhân văn.</p>*/}
+                    {/*            <p>Làm việc tại công ty công nghệ hàng đầu về Mobile app với môi trường trẻ trung, năng*/}
+                    {/*                động, thân thiện, sáng tạo.</p>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="reason__image">*/}
+                    {/*        <img src={img3} alt="" loading="lazy"/>*/}
+                    {/*        <img src={img4} alt="" loading="lazy"/>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    <ReasonSection
+                        subtitle="LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT"
+                        title="Môi trường làm việc lý tưởng"
+                        texts={[
+                            "Văn hoá công ty đậm đà sâu sắc với 4 giá trị cốt lõi: Hiệu quả, sáng tạo, lấy khách hàng là trung tâm, nhân văn.",
+                            "Làm việc tại công ty công nghệ hàng đầu về Mobile app với môi trường trẻ trung, năng động, thân thiện, sáng tạo.",
+                        ]}
+                        images={[img3, img4]}
+                        reverse={true}
+                    />
+                </AnimatedSection>
+
+                <AnimatedSection>
+                    {/*<div className="reason">*/}
+                    {/*    <div className="reason__content">*/}
+                    {/*        <p className="reason__sub-title">LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT</p>*/}
+                    {/*        <p className="reason__title">Môi trường làm việc lý tưởng</p>*/}
+                    {/*        <div className="reason__text">*/}
+                    {/*            <p>Văn hoá công ty đậm đà sâu sắc với 4 giá trị cốt lõi: Hiệu quả, sáng tạo, lấy khách*/}
+                    {/*                hàng*/}
+                    {/*                là trung tâm, nhân văn.</p>*/}
+                    {/*            <p>Làm việc tại công ty công nghệ hàng đầu về Mobile app với môi trường trẻ trung, năng*/}
+                    {/*                động, thân thiện, sáng tạo.</p>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="reason__image">*/}
+                    {/*        <img src={img5} alt="" loading="lazy"/>*/}
+                    {/*        <img src={img6} alt="" loading="lazy"/>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    <ReasonSection
+                        subtitle="LÝ DO BẠN NÊN CHỌN TP ENTERTAINMENT"
+                        title="Môi trường làm việc lý tưởng"
+                        texts={[
+                            "Văn hoá công ty đậm đà sâu sắc với 4 giá trị cốt lõi: Hiệu quả, sáng tạo, lấy khách hàng là trung tâm, nhân văn.",
+                            "Làm việc tại công ty công nghệ hàng đầu về Mobile app với môi trường trẻ trung, năng động, thân thiện, sáng tạo.",
+                        ]}
+                        images={[img5, img6]}
+                    />
+                </AnimatedSection>
             </section>
 
             <div className={"container container-xl"} id={"recruitment-list"}>

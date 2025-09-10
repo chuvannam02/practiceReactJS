@@ -1,0 +1,18 @@
+/**
+ * @Project: learn-react
+ * @Author CHUNAM
+ * @Date 9/10/2025
+ * @Time 9:57 PM
+ */
+
+.section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
