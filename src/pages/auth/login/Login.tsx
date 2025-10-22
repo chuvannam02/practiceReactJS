@@ -6,13 +6,14 @@ import FormTextarea from "../../../_utilities/form/FormTextareaProps";
 import "./Login.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { LoginService } from "./Login.service";
+import { EyeSlashIcon } from "@heroicons/react/24/outline";
 
 type Inputs = {
   username: string;
   password: string;
-  role: string;
-  note: string;
-  remember: boolean;
+  // role: string;
+  // note: string;
+  // remember: boolean;
 };
 
 const Login: React.FC = () => {
@@ -36,11 +37,11 @@ const Login: React.FC = () => {
     <>
       <div className="login">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <fieldset>
-            <legend>Đăng nhập</legend>
+          {/* <fieldset> */}
+            {/* <legend>Đăng nhập</legend> */}
 
             {/* 👇 Form chia 2 cột, có thể đổi cols=3 */}
-            <FormGrid cols={12}>
+            <FormGrid cols={1}>
               <FormInput
                 id="username"
                 label="Tên đăng nhập"
@@ -49,7 +50,8 @@ const Login: React.FC = () => {
                   required: "Vui lòng nhập tên đăng nhập",
                 })}
                 error={errors.username}
-                colSpan={6}
+                colSpan={12}
+                required={true}
               />
 
               <FormInput
@@ -64,11 +66,13 @@ const Login: React.FC = () => {
                     message: "Mật khẩu tối thiểu 6 ký tự",
                   },
                 })}
+                suffixAddon={<EyeSlashIcon />}
                 error={errors.password}
-                colSpan={6}
+                colSpan={12}
+                required={true}
               />
 
-              <FormSelect
+              {/* <FormSelect
                 id="role"
                 label="Vai trò"
                 options={[
@@ -96,7 +100,7 @@ const Login: React.FC = () => {
                 label="Ghi nhớ đăng nhập"
                 register={register("remember")}
                 colSpan={12}
-              />
+              /> */}
             </FormGrid>
 
             {/* Ví dụ thêm Select */}
@@ -111,11 +115,11 @@ const Login: React.FC = () => {
             error={errors.role}
           /> */}
 
-            <button type="submit">Đăng nhập</button>
-          </fieldset>
+            <button type="submit" className="btn btn-primary mw-full">Đăng nhập</button>
+          {/* </fieldset> */}
         </form>
       </div>
-      <div className="test"></div>
+      {/* <div className="test"></div> */}
     </>
   );
 };

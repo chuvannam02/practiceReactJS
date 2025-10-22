@@ -87,6 +87,7 @@ img {
     }
 
     .form-input {
+        flex: 1;
         padding: 0.5rem 0.75rem;
         border: 1px solid #ccc;
         border-radius: 6px;
@@ -182,4 +183,122 @@ img {
     .col-span-#{$i} {
         grid-column: span $i;
     }
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    // width: 100%;
+    /* chiếm hết container */
+    gap: 0.5rem;
+    /* khoảng cách giữa input và addon */
+
+    position: relative;
+    /* để các addon có thể position: absolute */
+    width: 100%;
+    /* tạo khoảng trống cho addon trên input */
+}
+
+.input-addon {
+    position: absolute;
+    /* phía trên input */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    /* giới hạn chiều rộng */
+    height: 1.5rem;
+    /* giới hạn chiều cao */
+    font-size: 1rem;
+    /* kích thước icon nếu là font/icon component */
+    color: #555;
+
+    &:hover {
+        cursor: pointer;
+        color: #000;
+    }
+}
+
+.input-addon.prefix {
+    left: 0.6rem;
+}
+
+.input-addon.suffix {
+    right: 0.6rem;
+}
+
+
+.btn {
+    margin: 1rem 0;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #3b82f6;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #2563eb;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+    }
+}
+
+.btn-primary {
+    background-color: #3b82f6;
+
+    &:hover {
+        background-color: #2563eb;
+    }
+}
+
+.btn-secondary {
+    background-color: #6b7280;
+
+    &:hover {
+        background-color: #4b5563;
+    }
+}
+
+.btn-danger {
+    background-color: #ef4444;
+
+    &:hover {
+        background-color: #dc2626;
+    }
+}
+
+// .formfield-required::after {
+//     content: "*";
+//     color: #e74c3c;
+//     margin-left: 0.25rem;
+//     font-size: 1rem;
+//     vertical-align: middle;
+//     /* căn giữa theo vertical với text */
+//     line-height: 1;
+// }
+
+.formfield-required {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    /* khoảng cách với input */
+}
+
+.text-red-500 {
+    color: #e74c3c;
+    font-size: 1rem;
+    /* giữ cùng size với label */
+}
+
+
+.mw-full {
+    max-width: 100%;
 }

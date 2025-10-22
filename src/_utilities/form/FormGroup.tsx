@@ -6,6 +6,7 @@ interface FormGroupProps {
   error?: FieldError;
   colSpan?: number;
   children: React.ReactNode;
+  required?: boolean;
 }
 
 const FormGroup: React.FC<FormGroupProps> = ({
@@ -13,6 +14,7 @@ const FormGroup: React.FC<FormGroupProps> = ({
   error,
   colSpan = 12,
   children,
+  required = false,
 }) => {
   const [fadeClass, setFadeClass] = useState<"visible" | "hidden">("hidden");
   const [displayedError, setDisplayedError] = useState<string | undefined>();
@@ -59,9 +61,12 @@ const FormGroup: React.FC<FormGroupProps> = ({
 
   return (
     <div className={`form-group col-span-${colSpan}`}>
-      {label && <label>{label}</label>}
+      {/* {label && <label className={required ? "formfield-required" : ""}>{label}</label>} */}
+      <label className="formfield-required">
+        {label}
+        {required && <span className="text-red-500 ml-1">*</span>}
+      </label>
       {children}
-
       {/* Render chỉ khi có lỗi hoặc đang fade-out */}
       {mounted && (
         <p className={`form-error ${fadeClass}`}>{displayedError || ""}</p>

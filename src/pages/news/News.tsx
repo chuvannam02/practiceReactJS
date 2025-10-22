@@ -14,7 +14,7 @@ const News: React.FC = () => {
       const data = await newsService.getAll(100);
       setNews(data);
     } catch (err: any) {
-      else console.error(err);
+      console.error(err);
     } finally {
       setLoading(false);
     }
