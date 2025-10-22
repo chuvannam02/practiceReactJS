@@ -30,6 +30,9 @@ const Header: React.FC = () => {
                         <NavLink to="/contact" className="menu__item">
                             Liên hệ
                         </NavLink>
+                        <NavLink to="/login" className="menu__item">
+                            Đăng nhập
+                        </NavLink>
                     </nav>
                 </div>
             </div>

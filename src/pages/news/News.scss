@@ -1,12 +1,21 @@
 .card {
-  position: relative;
-  width: 300px;
-  height: 500px;
-  background: white;
-  border-radius: 16px;
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    10px 10px 0 #4a3aff,
-    20px 20px 0 #4a3aff66; /* các lớp chồng */
-  padding: 1rem;
+    position: relative;
+    width: 300px;
+    height: 500px;
+    background: white;
+    border-radius: 16px;
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        10px 10px 0 #4a3aff,
+        20px 20px 0 #4a3aff66;
+    /* các lớp chồng */
+    padding: 1rem;
+}
+
+
+.news {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  
 }

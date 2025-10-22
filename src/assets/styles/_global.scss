@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import '_variables';
+
 /**
  * @Project: learn-react
  * @Author CHUNAM
@@ -31,6 +33,7 @@ body {
         opacity: 0;
         left: 20%;
     }
+
     100% {
         opacity: 1;
         left: 0;
@@ -48,4 +51,135 @@ img {
     height: auto;
 }
 
+.input,
+.select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
 
+.input-error,
+.select-error {
+    border-color: #f87171;
+}
+
+.error-text {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.form-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        margin-bottom: 0.25rem;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .form-input {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+
+        &:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+            outline: none;
+        }
+
+        &.has-error {
+            border-color: #e74c3c;
+        }
+    }
+
+    .form-select,
+    .form-textarea {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 8px 10px;
+        font-size: 14px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            outline: none;
+        }
+
+        &.has-error {
+            border-color: #e53e3e;
+        }
+    }
+
+    // .form-error {
+    //     min-height: 1rem;
+    //     /* tránh layout giật khi ẩn/hiện */
+    //     color: #e74c3c;
+    //     /* giữ màu sẵn */
+    //     font-size: 0.875rem;
+    //     margin-top: 0.25rem;
+
+    //     opacity: 0;
+    //     transform: translateY(-6px);
+    //     transition: opacity 0.3s ease, transform 0.3s ease;
+
+    //     &.visible {
+    //         opacity: 1;
+    //         transform: translateY(0);
+    //     }
+
+    //     &.hidden {
+    //         opacity: 0;
+    //         transform: translateY(-6px);
+    //     }
+    // }
+    .form-error {
+        min-height: 1rem;
+        color: #e74c3c;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+
+        &.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        &.hidden {
+            opacity: 0;
+            transform: translateY(-6px);
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-3px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Grid column span utilities (col-span-1 → col-span-12) */
+@for $i from 1 through 12 {
+    .col-span-#{$i} {
+        grid-column: span $i;
+    }
+}
