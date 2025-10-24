@@ -6,7 +6,8 @@ import FormTextarea from "../../../_utilities/form/FormTextareaProps";
 import "./Login.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { LoginService } from "./Login.service";
-import { EyeSlashIcon } from "@heroicons/react/24/outline";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import React from "react";
 
 type Inputs = {
   username: string;
@@ -17,62 +18,81 @@ type Inputs = {
 };
 
 const Login: React.FC = () => {
+  const [showingPassword, setShowingPassword] = React.useState(false);
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<Inputs>();
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     try {
       // Call login service here
       const response = LoginService.login(data);
+        "Login successful:",
+      );
     } catch (error) {
       console.error("Login error:", error);
     }
   };
-
 
   return (
     <>
       <div className="login">
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* <fieldset> */}
-            {/* <legend>Đăng nhập</legend> */}
+          {/* <legend>Đăng nhập</legend> */}
 
-            {/* 👇 Form chia 2 cột, có thể đổi cols=3 */}
-            <FormGrid cols={1}>
-              <FormInput
-                id="username"
-                label="Tên đăng nhập"
-                placeholder="Nhập tên đăng nhập"
-                register={register("username", {
-                  required: "Vui lòng nhập tên đăng nhập",
-                })}
-                error={errors.username}
-                colSpan={12}
-                required={true}
-              />
+          {/* 👇 Form chia 2 cột, có thể đổi cols=3 */}
+          <FormGrid cols={1}>
+            <FormInput
+              id="username"
+              label="Tên đăng nhập"
+              placeholder="Nhập tên đăng nhập"
+              register={register("username", {
+                required: "Vui lòng nhập tên đăng nhập",
+              })}
+              error={errors.username}
+              colSpan={12}
+              required={true}
+            />
 
-              <FormInput
-                id="password"
-                type="password"
-                label="Mật khẩu"
-                placeholder="Nhập mật khẩu"
-                register={register("password", {
-                  required: "Vui lòng nhập mật khẩu",
-                  minLength: {
-                    value: 6,
-                    message: "Mật khẩu tối thiểu 6 ký tự",
-                  },
-                })}
-                suffixAddon={<EyeSlashIcon />}
-                error={errors.password}
-                colSpan={12}
-                required={true}
-              />
+            <FormInput
+              id="password"
+              type={showingPassword ? "text" : "password"} // thay đổi type
+              label="Mật khẩu"
+              placeholder="Nhập mật khẩu"
+              register={register("password", {
+                required: "Vui lòng nhập mật khẩu",
+                minLength: {
+                  value: 6,
+                  message: "Mật khẩu tối thiểu 6 ký tự",
+                },
+              })}
+              suffixAddon={
+                <span
+                  onClick={() => setShowingPassword(!showingPassword)}
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {showingPassword ? (
+                    <EyeIcon className="w-5 h-5" />
+                  ) : (
+                    <EyeSlashIcon className="w-5 h-5" />
+                  )}
+                </span>
+              }
+              error={errors.password}
+              colSpan={12}
+              required={true}
+            />
 
-              {/* <FormSelect
+            {/* <FormSelect
                 id="role"
                 label="Vai trò"
                 options={[
@@ -101,10 +121,10 @@ const Login: React.FC = () => {
                 register={register("remember")}
                 colSpan={12}
               /> */}
-            </FormGrid>
+          </FormGrid>
 
-            {/* Ví dụ thêm Select */}
-            {/* <FormSelect
+          {/* Ví dụ thêm Select */}
+          {/* <FormSelect
             id="role"
             label="Vai trò"
             options={[
@@ -115,7 +135,12 @@ const Login: React.FC = () => {
             error={errors.role}
           /> */}
 
-            <button type="submit" className="btn btn-primary mw-full">Đăng nhập</button>
+          {/* Nút submit */}
+          <div className="flex-center w-full">
+            <button type="submit" className="btn btn-primary mw-full">
+              Đăng nhập
+            </button>
+          </div>
           {/* </fieldset> */}
         </form>
       </div>

@@ -202,9 +202,6 @@ img {
 .input-addon {
     position: absolute;
     /* phía trên input */
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 1.5rem;
     /* giới hạn chiều rộng */
     height: 1.5rem;
@@ -226,7 +223,6 @@ img {
 .input-addon.suffix {
     right: 0.6rem;
 }
-
 
 .btn {
     margin: 1rem 0;
@@ -301,4 +297,43 @@ img {
 
 .mw-full {
     max-width: 100%;
+}
+
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex {
+    display: flex;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
 }
