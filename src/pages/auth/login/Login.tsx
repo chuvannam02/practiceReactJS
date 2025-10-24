@@ -4,35 +4,56 @@ import FormInput from "../../../_utilities/form/FormInput";
 import FormSelect from "../../../_utilities/form/FormSelect";
 import FormTextarea from "../../../_utilities/form/FormTextareaProps";
 import "./Login.scss";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { LoginService } from "./Login.service";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import React from "react";
+import { z } from "zod";
+// pnpm add @hookform/resolvers zod
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LoginFormData, loginSchema } from "./Login.schema";
 
-type Inputs = {
-  username: string;
-  password: string;
-  // role: string;
-  // note: string;
-  // remember: boolean;
-};
+// type Inputs = {
+//   username: string;
+//   password: string;
+//   // role: string;
+//   // note: string;
+//   // remember: boolean;
+// };
 
 const Login: React.FC = () => {
   const [showingPassword, setShowingPassword] = React.useState(false);
 
+  const userSchema = z.object({
+    username: z.string().min(1, "Vui lòng nhập tên đăng nhập"),
+    password: z.string().min(6, "Mật khẩu tối thiểu 6 ký tự"),
+    // role: z.string().min(1, "Vui lòng chọn vai trò"),
+    // note: z.string().optional(),
+    // remember: z.boolean().optional(),
+  });
+
+  // const result = userSchema.safeParse(JSON.parse('{"name":"Nam"}'));
+
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   watch,
+  //   formState: { errors },
+  // } = useForm<Inputs>();
+
+  // 👇 Tích hợp Zod vào React Hook Form
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    mode: "onBlur", // validate khi rời khỏi input
+  });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit = async (data: LoginFormData) => {
     try {
-      // Call login service here
-      const response = LoginService.login(data);
-        "Login successful:",
-      );
+      const response = await LoginService.login(data);
     } catch (error) {
       console.error("Login error:", error);
     }
@@ -51,9 +72,7 @@ const Login: React.FC = () => {
               id="username"
               label="Tên đăng nhập"
               placeholder="Nhập tên đăng nhập"
-              register={register("username", {
-                required: "Vui lòng nhập tên đăng nhập",
-              })}
+              register={register("username")}
               error={errors.username}
               colSpan={12}
               required={true}
@@ -64,13 +83,7 @@ const Login: React.FC = () => {
               type={showingPassword ? "text" : "password"} // thay đổi type
               label="Mật khẩu"
               placeholder="Nhập mật khẩu"
-              register={register("password", {
-                required: "Vui lòng nhập mật khẩu",
-                minLength: {
-                  value: 6,
-                  message: "Mật khẩu tối thiểu 6 ký tự",
-                },
-              })}
+              register={register("password")}
               suffixAddon={
                 <span
                   onClick={() => setShowingPassword(!showingPassword)}

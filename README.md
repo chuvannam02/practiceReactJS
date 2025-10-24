@@ -48,3 +48,41 @@ export default tseslint.config({
   },
 })
 ```
+
+
+### Muốn dùng Zod + Spring Boot chung schema
+Đây là tình huống trong các hệ thống FE/BE đồng bộ kiểu microfrontend hoặc monorepo (nx workspace).
+Có 2 hướng làm chuẩn:
+
+- 💡 Cách 1: Sinh Zod schema tự động từ OpenAPI (Spring Boot → Zod)
+Spring Boot sinh OpenAPI spec (bằng springdoc-openapi hoặc Swagger).
+
+FE (TypeScript) dùng công cụ sinh Zod schema tự động:
++ openapi-zod-client
++ orval
++ zodios
+
+Ví dụ:
+### Sinh Zod schema + type từ openapi.json
+```
+npx openapi-zod-client --openapi ./openapi.json --output ./src/api-client.ts
+```
+→ Kết quả: file TypeScript có sẵn z.object(...) tương ứng với DTO trong Spring.
+
+🟢 Ưu điểm:
+Tự động đồng bộ schema giữa FE & BE.
+Không phải viết lại schema hai lần.
+FE có thể dùng safeParse() validate form trước khi gửi lên API.
+
+- 💡 Cách 2: Dùng JSON Schema làm trung gian
+Định nghĩa DTO trong Spring Boot
+Sinh ra JSON Schema từ DTO (bằng jackson-module-jsonSchema)
+FE convert JSON Schema → Zod (bằng json-schema-to-zod)
+👉 Luồng:
+```
+Spring Boot DTO → JSON Schema → Zod Schema → Form Validation
+```
+
+🟢 Ưu điểm:
+Ngôn ngữ độc lập (Java, TypeScript, Python đều dùng được)
+Tự động hóa pipeline giữa backend và frontend.
