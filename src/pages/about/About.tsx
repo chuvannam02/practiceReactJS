@@ -4,7 +4,7 @@
  * @Date 9/9/2025
  * @Time 5:03 PM
  */
-import UploadFile from "../../_utilities/UploadFile.tsx";
+// import UploadFile from "../../_utilities/UploadFile.tsx";
 import UploadCompare from "../../_utilities/UploadCompare.tsx";
 
 const About: React.FC = () => {

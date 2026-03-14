@@ -1,8 +1,6 @@
-import FormCheckbox from "../../../_utilities/form/FormCheckbox";
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import FormGrid from "../../../_utilities/form/FormGrid";
 import FormInput from "../../../_utilities/form/FormInput";
-import FormSelect from "../../../_utilities/form/FormSelect";
-import FormTextarea from "../../../_utilities/form/FormTextareaProps";
 import "./Login.scss";
 import { useForm } from "react-hook-form";
 import { LoginService } from "./Login.service";
@@ -24,13 +22,13 @@ import { LoginFormData, loginSchema } from "./Login.schema";
 const Login: React.FC = () => {
   const [showingPassword, setShowingPassword] = React.useState(false);
 
-  const userSchema = z.object({
-    username: z.string().min(1, "Vui lòng nhập tên đăng nhập"),
-    password: z.string().min(6, "Mật khẩu tối thiểu 6 ký tự"),
-    // role: z.string().min(1, "Vui lòng chọn vai trò"),
-    // note: z.string().optional(),
-    // remember: z.boolean().optional(),
-  });
+  // const userSchema = z.object({
+  //   username: z.string().min(1, "Vui lòng nhập tên đăng nhập"),
+  //   password: z.string().min(6, "Mật khẩu tối thiểu 6 ký tự"),
+  //   // role: z.string().min(1, "Vui lòng chọn vai trò"),
+  //   // note: z.string().optional(),
+  //   // remember: z.boolean().optional(),
+  // });
 
   // const result = userSchema.safeParse(JSON.parse('{"name":"Nam"}'));
 
@@ -53,7 +51,8 @@ const Login: React.FC = () => {
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      const response = await LoginService.login(data);
+      // const response = await LoginService.login(data);
+      await LoginService.login(data);
     } catch (error) {
       console.error("Login error:", error);
     }

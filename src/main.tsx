@@ -28,7 +28,7 @@ const withProviders = (element: React.ReactNode) => (
 // Lazy load route components
 const About = lazy(() => import("./pages/about/About.tsx"));
 const Career = lazy(() => import("./pages/career/Career"));
-const News = lazy(() => import("./pages/news/News"));
+// const News = lazy(() => import("./pages/news/News"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 
 // Define routes using the Data Router API

@@ -5,10 +5,11 @@
  * @Time 5:02 PM
  */
 
-import { useState } from 'react';
+import { useState, ComponentType } from 'react';
 
-const UpdatedComponent = (OriginalComponent) => {
-    const NewComponent = (props) => {
+const UpdatedComponent = (OriginalComponent: ComponentType<unknown>) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const NewComponent = (props: any) => {
         const [fontSize, setFontSize] = useState(10);
 
         const handleSetFontSizes = () => setFontSize(fontSize => fontSize + 1);

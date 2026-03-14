@@ -4,6 +4,7 @@ import axios, { AxiosError } from "axios";
 import { SWPeopleResponse } from "./people.interface";
 import { Button, Form, Input } from "antd";
 import { useAlert } from "../../_utilities/popups/AlertService.tsx";
+import { keepPreviousData } from "@tanstack/react-query";
 
 type PeopleQueryKey = ['people', { search: string; page: number }];
 const fetchPeople: QueryFunction<SWPeopleResponse, PeopleQueryKey> =
@@ -34,7 +35,7 @@ const SWPeopleQuery = () => {
         queryKey: ['people', { search: submittedSearch, page }],
         queryFn: fetchPeople,
         enabled: false,
-        keepPreviousData: true,
+        placeholderData: keepPreviousData,
         retry: 2,
         retryDelay: 500,
     });

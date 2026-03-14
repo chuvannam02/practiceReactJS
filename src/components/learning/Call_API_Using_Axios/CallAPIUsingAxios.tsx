@@ -4,7 +4,7 @@
  * @Date 5/1/2025
  * @Time 4:49 PM
  */
-import { ComponentProps, useEffect, useRef, useState } from "react";
+import { ComponentProps, useEffect, useState } from "react";
 import axios from "axios";
 
 type CallAPIUsingAxiosProps = ComponentProps<"div"> & {
